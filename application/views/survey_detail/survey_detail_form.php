@@ -40,10 +40,26 @@
                         
                     </select>
                 </div>
-				<div class="form-group">
+                <div class="form-group">
                     <label >Lokasi Kekeringan <?php echo form_error('lokasi_kekeringan') ?></label>
-                    <input type="text" class="form-control" name="lokasi_kekeringan" id="lokasi_kekeringan" placeholder="Lokasi Kekeringan" value="<?php echo $lokasi_kekeringan; ?>" <?= $disable ?>/>
+                    <select class="form-control" name="rt">
+                        <option>Pilih RT..</option>
+                        <?php 
+                            for ($i=1; $i < 25 ; $i++) { 
+                                echo "<option value='RT ".$i."'>RT ".$i." </option>";
+                            }
+                        ?>
+                    </select>
+                    <select class="form-control" name="rw">
+                        <option>Pilih RW</option>
+                        <?php 
+                            for ($i=1; $i < 25 ; $i++) { 
+                                echo "<option value='RW ".$i."'>RW ".$i." </option>";
+                            }
+                        ?>
+                    </select>
                 </div>
+
 
 
 				<div class="form-group">

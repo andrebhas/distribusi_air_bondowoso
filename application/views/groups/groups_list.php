@@ -17,8 +17,8 @@
             <div class="row">
                 <div class="col-md-5 text-left">
                     <?php echo anchor(site_url('groups/create'), '<i class="fa fa-plus-square"></i> Tambah', 'class="btn btn-default btn-xs" data-popup="tooltip-custom" title="tambah data"'); ?>
-					<?php echo anchor(site_url('groups/excel'), '<i class="fa fa-file-excel-o"></i>', 'class="btn btn-success btn-xs" data-popup="tooltip-custom" title="export ms.excel"'); ?>
-					<?php echo anchor(site_url('groups/word'), '<i class="fa fa-file-word-o"></i>', 'class="btn btn-primary btn-xs"  data-popup="tooltip-custom" title="export ms.word"'); ?>
+					<?php //echo anchor(site_url('groups/excel'), '<i class="fa fa-file-excel-o"></i>', 'class="btn btn-success btn-xs" data-popup="tooltip-custom" title="export ms.excel"'); ?>
+					<?php //echo anchor(site_url('groups/word'), '<i class="fa fa-file-word-o"></i>', 'class="btn btn-primary btn-xs"  data-popup="tooltip-custom" title="export ms.word"'); ?>
 				</div>
                 <div class="col-md-7 text-center">
                     <div style="margin-top: 4px"  id="message">

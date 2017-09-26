@@ -55,7 +55,6 @@
 										<li><a href="<?php echo base_url('groups.html') ?>"><i class="fa fa-sitemap"></i> <span>Level</span></a></li>
 									</ul>
 								</li>
-								<li><a href="<?php echo base_url('develop') ?>"><i class="icon-home4"></i> <span>Developer Tools</span></a></li>
 	<?php else: ?>
 
 

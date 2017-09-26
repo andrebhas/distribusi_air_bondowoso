@@ -119,7 +119,7 @@ class Survey_detail extends CI_Controller
 				'id_survey' => $this->input->post('id_survey',TRUE),
 				'id_user' => $user->id,
 				'nama_desa' => $this->input->post('nama_desa',TRUE),
-				'lokasi_kekeringan' => $this->input->post('lokasi_kekeringan',TRUE),
+				'lokasi_kekeringan' => $this->input->post('rt',TRUE)." ".$this->input->post('rw',TRUE),
 				'k1' => $this->input->post('k1',TRUE),
 				'k2' => $this->input->post('k2',TRUE),
 				'k3' => $this->input->post('k3',TRUE),
@@ -130,7 +130,7 @@ class Survey_detail extends CI_Controller
 
             $this->Survey_detail_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('survey_detail'));
+            redirect(site_url('survey'));
         }
     }
     
@@ -213,7 +213,7 @@ class Survey_detail extends CI_Controller
     {
 		$this->form_validation->set_rules('id_survey', 'id survey', 'trim|required');
 		$this->form_validation->set_rules('nama_desa', 'nama desa', 'trim|required');
-		$this->form_validation->set_rules('lokasi_kekeringan', 'lokasi kekeringan', 'trim|required');
+		//$this->form_validation->set_rules('lokasi_kekeringan', 'lokasi kekeringan', 'trim|required');
 		$this->form_validation->set_rules('k1', 'k1', 'trim|required');
 		$this->form_validation->set_rules('k2', 'k2', 'trim|required');
 		$this->form_validation->set_rules('k3', 'k3', 'trim|required');
