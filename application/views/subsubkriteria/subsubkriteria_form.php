@@ -33,7 +33,7 @@
                 </div>
 				<input type="hidden" name="id_subsubkriteria" value="<?php echo $id_subsubkriteria; ?>" /> 
 				<button type="submit" class="btn btn-success"><?php echo $button ?></button> 
-				<a href="<?php echo site_url('subsubkriteria') ?>" class="btn btn-default">Cancel</a>
+				<a href="<?php echo site_url('subsubkriteria/detail/'.$subkriteria->id_subkriteria) ?>" class="btn btn-default">Cancel</a>
 			</form>
         
         </div>

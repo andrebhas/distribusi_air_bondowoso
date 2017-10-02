@@ -183,8 +183,9 @@ class Survey extends CI_Controller
     {
             $data = array(
                 'status' => $this->input->post('status',TRUE),
+                'tgl_drop' => $this->input->post('tgl_drop',TRUE)
             );
-
+            print_r($data);
             $this->Survey_model->update($this->input->post('id_survey', TRUE), $data);
             $this->session->set_flashdata('message', 'Update status survey berhasil');
             redirect(site_url('survey'));

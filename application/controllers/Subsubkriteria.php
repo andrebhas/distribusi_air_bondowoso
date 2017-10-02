@@ -128,12 +128,13 @@ class Subsubkriteria extends CI_Controller
         
         $row = $this->Subsubkriteria_model->get_by_id($id);
         if ($row) {
+            $subkriteria = $this->Subkriteria_model->get_by_id($row->id_subkriteria);
             $data = array(
                 'title'       => 'Subsubkriteria' ,
                 'content'     => 'subsubkriteria/subsubkriteria_form', 
                 'breadcrumbs' => $this->breadcrumbs->show(),
                 'user'        => $user ,
-
+                'subkriteria' => $subkriteria ,
                 'button' => 'Update',
                 'action' => site_url('subsubkriteria/update_action'),
 				'id_subsubkriteria' => set_value('id_subsubkriteria', $row->id_subsubkriteria),
@@ -163,7 +164,7 @@ class Subsubkriteria extends CI_Controller
 
             $this->Subsubkriteria_model->update($this->input->post('id_subsubkriteria', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(base_url('subsubkriteria'));
+            redirect(base_url('subsubkriteria/detail/'.$this->input->post('id_subkriteria',TRUE)));
         }
     }
     

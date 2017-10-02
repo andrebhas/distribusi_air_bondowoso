@@ -24,8 +24,8 @@
             <?php if ($mtd == 'list'): ?>
                 <div class="col-md-5 text-left">
                     <?php echo anchor(site_url('survey/create'), '<i class="fa fa-plus-square"></i> Tambah', 'class="btn btn-default btn-xs" data-popup="tooltip-custom" title="tambah data"'); ?>
-                    <?php echo anchor(site_url('survey/excel'), '<i class="fa fa-file-excel-o"></i>', 'class="btn btn-success btn-xs" data-popup="tooltip-custom" title="export ms.excel"'); ?>
-                    <?php echo anchor(site_url('survey/word'), '<i class="fa fa-file-word-o"></i>', 'class="btn btn-primary btn-xs"  data-popup="tooltip-custom" title="export ms.word"'); ?>
+                    <?php //echo anchor(site_url('survey/excel'), '<i class="fa fa-file-excel-o"></i>', 'class="btn btn-success btn-xs" data-popup="tooltip-custom" title="export ms.excel"'); ?>
+                    <?php //echo anchor(site_url('survey/word'), '<i class="fa fa-file-word-o"></i>', 'class="btn btn-primary btn-xs"  data-popup="tooltip-custom" title="export ms.word"'); ?>
                 </div>
                 <div class="col-md-7 text-center">
                     <div style="margin-top: 4px"  id="message">
@@ -46,6 +46,7 @@
                         <th>Kecamatan</th>       
                         <?php if ($mtd=='list'): ?>
                             <th>Status</th>
+                            <th>Tgl Droping</th>
                             <th>Action</th>
                         <?php else: ?>
                             <th>Analisis</th>
@@ -72,17 +73,27 @@
                         
                         <?php if ($mtd == 'list'): ?>
                             <td>
-                                <button class="btn btn-xs btn-<?php if ($survey->status == 'proses'){ echo 'primary';} else{ echo 'success';}?>" data-toggle="modal" data-target="#statusModal" data-whatever="<?= $survey->id_survey ?>" >
+                                <button class="btn btn-xs btn-<?php if ($survey->status == 'proses'){ echo 'primary';} else{ echo 'success';}?>" data-toggle="modal" data-target="#statusModal" data-whatever="<?= $survey->id_survey ?>" <?php if ($survey->status != 'proses'){ echo 'disabled';}?> >
                                     <?php echo $survey->status ?> 
                                 </button>
                             </td>
-                            <td style="text-align:center" width="200px">
+                            <td> <?php 
+                                if($survey->tgl_drop != null){
+                                    echo $survey->tgl_drop;
+                                } else {
+                                    echo "dalam proses survey";
+                                }
+                            ?></td>
+                            <td style="text-align:center" width="100px">
                             <?php 
-                                echo anchor(site_url('survey/read/'.$survey->id_survey),'Detail'); 
-                                echo ' | '; 
-                                echo anchor(site_url('survey/update/'.$survey->id_survey),'Update'); 
-                                echo ' | '; 
-                                echo anchor(site_url('survey/delete/'.$survey->id_survey),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                                //echo anchor(site_url('survey/read/'.$survey->id_survey),'Detail'); 
+                                //echo ' | '; 
+                                if ($survey->status == 'proses'){ 
+                                    echo anchor(site_url('survey/update/'.$survey->id_survey),'Update');
+                                    echo ' | '; 
+                                    echo anchor(site_url('survey/delete/'.$survey->id_survey),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                                }
+                                
                             ?>
                             </td>
                         <?php else: ?>
@@ -108,11 +119,18 @@
           </div>
           <div class="modal-body">
             <form action="<?php echo base_url("survey/update_status/") ?>" method="post" id="status">
-              <select class="form-control" id="pilih" name="status">
-                <option value="selesai">Selesai</option>
-                <option value="proses">Proses</option>
-              </select>
-              <br>
+              
+              <div class="form-group">
+                <label for="status">Status:</label>
+                <select class="form-control" id="pilih" name="status">
+                    <option value="selesai">Selesai</option>
+                    <option value="proses">Proses</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tgl_drop">Tanggal Droping Air :</label>
+                <input type="date" class="form-control" id="tgl_drop" name="tgl_drop" required>
+              </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -154,21 +172,14 @@
                     $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').removeClass('dropup');
                 }
             });
-
-
             // Basic responsive configuration
             $('.datatable-responsive').DataTable();
-
-
             // Add placeholder to the datatable filter option
             $('.dataTables_filter input[type=search]').attr('placeholder','Ketik ...');
-
-
             // Enable Select2 select for the length option
             $('.dataTables_length select').select2({
                 minimumResultsForSearch: "-1"
-            });
-            
+            });           
         });
     </script>
 <?php endif ?>

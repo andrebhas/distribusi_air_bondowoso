@@ -51,8 +51,19 @@ class Analisis extends CI_Controller {
         $normalisasi = $this->Analisis_model->normalisasi($id_survey,$kecamatan);
 
         $this->Analisis_model->prioritas($id_survey,$kecamatan);
-        $hasil_analisis = $this->Analisis_model->get_prioritas($kecamatan);	
+        $hasil_analisis = $this->Analisis_model->get_prioritas($kecamatan);
 
+        $survey = $this->Survey_model->get_by_id($id_survey);
+        $survey_detail_by_id = $this->Survey_detail_model->get_by_id_survey($id_survey);
+        $begin = new DateTime( $survey->tgl_drop );
+        $interval = new DateInterval("P2D"); // 1 month
+        $occurrences = count($survey_detail_by_id);
+        $period = new DatePeriod($begin,$interval,$occurrences);
+        foreach($period as $dt){
+          $arr_date[] =  $dt->format("Y-m-d");
+        }
+        //print_r($arr_date);
+        
         $this->breadcrumbs->push('Analisis', '/analisis');
         $this->breadcrumbs->push('Hasil Kecamatan '.$kecamatan, '/survey_detail');
 
@@ -68,6 +79,8 @@ class Analisis extends CI_Controller {
 
             'normalisasi'       => $normalisasi,
             'hasil_analisis'     => $hasil_analisis,
+            
+            'tgl_drop' => $arr_date ,
         );
 
         $this->load->view('layout/layout', $data);

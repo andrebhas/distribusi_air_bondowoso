@@ -155,11 +155,13 @@
                         <th>S6</th>
                         <th>Total</th>
                         <th>Prioritas</th>
+                        <th>Tanggal Droping Air</th>
                     </tr>
                 </thead>
                 <tbody>
             <?php
                 $start2 = 0;
+                $i= 0;
                 foreach ($hasil_analisis as $ha)
                 {
             ?>
@@ -189,6 +191,7 @@
                         <td><?php echo number_format((double)$ha->s6, 4, '.', ''); ?></td>
                         <td><?php echo number_format((double)$ha->total, 4, '.', ''); ?></td>
                         <td> Prioritas <?php echo ++$start2 ?></td>
+                        <td> <?php echo $tgl_drop[$i]; $i++ ?> </td>
                     </tr>
             <?php
                 }
