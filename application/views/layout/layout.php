@@ -99,7 +99,7 @@
 
 			<!-- Footer -->
 			<div class="text-center">
-				   &copy; 2016. <a href="<?php echo base_url() ?>"> <?php echo $this->config->item('nama_sistem') ?></a> by <a href="http://bhas.web.id" target="_blank">Andre Bhaskoro Suprayogi</a>
+				   &copy; 2016. <a href="<?php echo base_url() ?>"> <?php echo $this->config->item('nama_sistem') ?></a> by <a href="#" target="_blank"> Sofi Indra</a>
 			</div>
 			<!-- /footer -->
 

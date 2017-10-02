@@ -79,20 +79,7 @@
                 </div>
               </div>
 
-              <div class="form-group login-options">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <label class="checkbox-inline">
-                      <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-                      Remember
-                    </label>
-                  </div>
-
-                  <div class="col-sm-6 text-right">
-                   <a href="forgot_password"><?php echo lang('login_forgot_password');?></a>
-                  </div>
-                </div>
-              </div>
+              
 
               <div class="form-group">
                 <button type="submit" class="btn bg-blue btn-block">Login <i class="icon-arrow-right14 position-right"></i></button>
@@ -106,11 +93,6 @@
                 <li><a href="#" class="btn border-info text-info btn-flat btn-icon btn-rounded"><i class="icon-twitter"></i></a></li>
               </ul>
               -->
-
-
-              <div class="content-divider text-muted form-group"><span>Don't have an account?</span></div>
-              <a href="login_registration.html" class="btn btn-default btn-block content-group">Sign up</a>
-              <span class="help-block text-center no-margin">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
             </div>
 
  
@@ -120,7 +102,7 @@
 
           <!-- Footer -->
           <div class="footer text-muted">
-            &copy; 2016. <a href="#"><?php echo $this->config->item('nama_sistem') ?></a> by <a href="http://bhas.web.id" target="_blank">Andre Bhaskoro</a>
+            &copy; 2016. <a href="#"><?php echo $this->config->item('nama_sistem') ?></a> by <a href="#" target="_blank">Sofi Indra</a>
           </div>
           <!-- /footer -->
 
