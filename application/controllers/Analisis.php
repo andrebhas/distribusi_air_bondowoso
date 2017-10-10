@@ -73,7 +73,7 @@ class Analisis extends CI_Controller {
 			'breadcrumbs' => $this->breadcrumbs->show(),
 			'user'        => $user ,
 
-            'survey_detail_data' => $survey_detail ,
+            'survey_detail_data' => $survey_detail_by_id ,
 			'nilai_min'   => $nilai_min,
 			'nilai_max'   => $nilai_max,
 

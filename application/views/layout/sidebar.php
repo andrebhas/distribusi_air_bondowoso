@@ -52,7 +52,9 @@
 									<a href="#"><i class="icon-users"></i> <span>Kelola Users</span></a>
 									<ul>
 										<li><a href="<?php echo base_url('users.html') ?>"><i class="fa fa-users"></i> <span>Users</span></a></li>
+										<!--
 										<li><a href="<?php echo base_url('groups.html') ?>"><i class="fa fa-sitemap"></i> <span>Level</span></a></li>
+										-->
 									</ul>
 								</li>
 	<?php else: ?>

@@ -32,6 +32,7 @@ class Survey_detail_model extends CI_Model
     function get_by_id_survey($id_survey)
     {
         $this->db->where('id_survey', $id_survey);
+        $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
     }
     

@@ -7,7 +7,6 @@
 
 <script src="<?php echo base_url('assets/js/plugins/tables/datatables/datatables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/plugins/tables/datatables/extensions/responsive.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/plugins/visualization/echarts/echarts.js') ?>"></script>
 
 <div class="content ">
 
@@ -140,9 +139,8 @@
             </div>
         </div>
 
-        <div class="panel-body table-responsive"> 
-
-            <table class="table table-sm">
+        <div class="panel-body table-responsive">     
+            <table class="table table-sm table-hover">
                 <thead>
                     <tr>
                         <th>Nama Desa</th>
@@ -165,22 +163,7 @@
                 foreach ($hasil_analisis as $ha)
                 {
             ?>
-                    <tr 
-                    <?php 
-                        switch ($start2) {
-                            case 0:
-                                 echo "class='bg-danger'";
-                                break;
-                            case 1:
-                                 echo "class='bg-warning'";
-                                break;
-                            
-                            default:
-                                echo "";
-                                break;
-                        }
-                    ?>    
-                    >
+                    <tr>
                         <td><?php echo $ha->nama_desa?></td>
                         <td><?php echo $ha->lokasi_kekeringan ?></td>
                         <td><?php echo number_format((double)$ha->s1, 4, '.', ''); ?></td>
@@ -190,8 +173,8 @@
                         <td><?php echo number_format((double)$ha->s5, 4, '.', ''); ?></td>
                         <td><?php echo number_format((double)$ha->s6, 4, '.', ''); ?></td>
                         <td><?php echo number_format((double)$ha->total, 4, '.', ''); ?></td>
-                        <td> Prioritas <?php echo ++$start2 ?></td>
-                        <td> <?php echo $tgl_drop[$i]; $i++ ?> </td>
+                        <td><?php echo ++$start2 ?></td>
+                        <td width="130"> <?php echo $tgl_drop[$i]; $i++ ?> </td>
                     </tr>
             <?php
                 }
@@ -204,48 +187,3 @@
 
 
 </div>
-
-
-<script type="text/javascript">
-/*
-$(function() {
-
-    $.extend( $.fn.dataTable.defaults, {
-        autoWidth: false,
-        responsive: true,
-        columnDefs: [{ 
-            orderable: false,
-            width: '100px',
-            targets: [ 5 ]
-        }],
-        dom: '<"datatable-header"fl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
-        language: {
-            search: '<span>Cari :</span> _INPUT_',
-            lengthMenu: '<span>Show:</span> _MENU_',
-            paginate: { 'Cari' : 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' }
-        },
-        drawCallback: function () {
-            $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').addClass('dropup');
-        },
-        preDrawCallback: function() {
-            $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').removeClass('dropup');
-        }
-    });
-
-
-    // Basic responsive configuration
-    $('.datatable-responsive').DataTable();
-
-
-    // Add placeholder to the datatable filter option
-    $('.dataTables_filter input[type=search]').attr('placeholder','Ketik ...');
-
-
-    // Enable Select2 select for the length option
-    $('.dataTables_length select').select2({
-        minimumResultsForSearch: "-1"
-    });
-    
-});
-*/
-</script>
